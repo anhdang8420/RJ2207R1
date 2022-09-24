@@ -1,0 +1,4 @@
+*override:
+nếu có nhiều phương thức cùng tên, khác tham số, khác nhiệm vụ, khi gọi, sẽ gõi phương thức được khai báo cuối cùng
+* từ khoá static:
+khi gọi phương thức static, không cần tạo đối tượng mà gọi từ ClassName.method() luôn
