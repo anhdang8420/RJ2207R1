@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let greetings = "lazy dog humps over brown fox";
+        let chars = [...greetings];
+        console.log(chars)
+        console.log(chars.length);
+
+        let blog1Subscribers = ['billy@example.com', 'sally@gmail.com'];
+        let blog2Subscribers = ['timmy@gmail.com', 'tammy@example.com', 'tommy@gmail.com'];
+        let subscribers = [...blog1Subscribers, ...blog2Subscribers];
+        console.log(subscribers);
+
+        const billing = { billingContact: '0987654321', billingAddress: 'street no 123, xyz city' };
+        const shipping = { shippingContact: '123456789', shippingAddress: 'street no 999, abc city' };
+        const custInfo = { ...billing, ...shipping };
+        console.log(custInfo);
+
+        let students = ['John', 'Sofia', 'Bob'];
+        let copy_students = students;
+        console.log(copy_students);
+        let arr2 = students.push('Sally'); // Change students
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

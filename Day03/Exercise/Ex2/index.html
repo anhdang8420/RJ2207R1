@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Xây dựng lớp Person gồm thuộc tính name, constructor. Sử dụng hàm get, set để cài đặt thuộc tính name. 
+    Xây dựng phương thức walk để mô tả việc di chuyển của lớp Person.
+
+    Lớp Programmer kế thừa lớp Person, sử dụng hàm get và set để cài đặt ngôn ngữ lập trình của Programmer. 
+    Viết thêm phương thức writeCode.
+
+    Khai báo các đối tượng thuộc lớp Programmer và gọi các hàm của lớp Person và Programmer. Quan sát kết quả.
+    -->
+    <script>
+        class Person {
+            constructor(name) {
+                this._name = name;
+            }
+            get name() {
+                return this._name;
+            }
+            set name(name) {
+                this._name = name;
+            }
+            walk(km) {
+                return this._name + ' walk for ' + km + ' km';
+            }
+        }
+        class Programmer extends Person {
+            constructor(name, language) {
+                super(name);
+                this._language = language;
+            }
+            get Language() {
+                return this._language;
+            }
+            set Language(language) {
+                this._language = language;
+            }
+        }
+
+        let pro1 = new Programmer('Anh','Javascript');
+        pro1.name = 'Dang Thi Anh';
+        console.log(pro1.name);
+        pro1.language='Javascript';
+
+        console.log(pro1.walk(2));
+        console.log(pro1.language);
+
+
+    </script>
+</body>
+
+</html>
