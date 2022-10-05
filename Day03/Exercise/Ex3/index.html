@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Xây dựng lớp thông tin gồm các thuộc tính tên, mô tả và hàm tính toán có 1 tham số  mặc định có 
+        giá trị bằng 1, hàm này tăng gấp 3 lần giá trị của tham số truyền vào.
+
+        Xây dựng lớp hình học kế thừa từ lớp trên. Có các thuộc tính là chiều dài, mô tả và hàm tính toán 
+        với 1 tham số truyền vào.
+
+        Tạo các đối tượng của lớp hình học và gọi các thuộc tính của lớp đó, các thuộc tính của lớp cha, 
+        và hàm để quan sát kết quả. -->
+    <script>
+        class Info {
+            constructor(name, des) {
+                this.name = name;
+                this.des = des;
+            }
+            static triple(number = 1) {
+                return number * 3;
+            }
+        }
+        class Shape extends Info {
+            constructor(name, des, length) {
+                super(name,des);
+                this.length = length;
+            }
+        }
+
+        let s1 = new Shape('','mo ta: day la hinh vuong', 3);
+
+        console.log(s1.des);
+        console.log(s1.length);
+        console.log(Info.triple(4));
+    </script>
+</body>
+
+</html>
