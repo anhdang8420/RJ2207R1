@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather Forecast</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Weather Forecast</h1>
+        <input type="text" pattern="[a-zA-Z]*" onkeyup="getCityName(this)" placeholder="Enter a city">
+        <input type="button" value="Submit" onclick="search()">
+        <hr>
+        <p>City name: <span id="nameLabel"></span></p>
+        <p>Nation: <span id="nationLabel"></span></p>
+        <p>Current Temperature: <span id="tempLabel"></span></p>
+        <p>Humidity: <span id="humidLabel"></span></p>
+    </div>
+
+    <script>
+        const API_KEY = '40befd0755a88f82839898ab1f6310ea';
+        let cityName;
+        let baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+
+        let nameLabel = document.getElementById('nameLabel');
+        let tempLabel = document.getElementById('tempLabel');
+        let humidLabel = document.getElementById('humidLabel');
+        let nationLabel = document.getElementById('nationLabel');
+        function getCityName(obj) {
+            cityName = obj.value;
+            console.log(cityName);
+        }
+
+        function search() {
+            axios.get(baseUrl, {
+                params: {
+                    q: cityName,
+                    appid: API_KEY
+                }
+            })
+                .then(value => {
+                    nameLabel.innerText = `${value.data.name}`;
+                    nationLabel.innerText = `${value.data.sys.country}`;
+                    tempLabel.innerText = `${value.data.main.temp - 273} C`;
+                    humidLabel.innerText = `${value.data.main.humidity} `+ '\%';
+                    console.log(value.data);
+                }
+                )
+                .catch(err => console.log('Đã có lỗi: ' + err));
+        }
+
+    </script>
+</body>
+
+</html>

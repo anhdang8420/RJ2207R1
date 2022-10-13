@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3: Sử dụng await với async function</title>
+</head>
+
+<body>
+    <script>
+        //Tạo đối tượng Promise
+        let promise = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve('Promise resolved')
+            }, 4000);
+            
+        });
+
+        //Tạo async function
+        async function asyncFunc() {
+            // wait until the promise resolves 
+            //Từ khoá await đợi cho đến khi promise được hoàn tất (giải quyết hoặc từ chối).
+
+            let result = await promise;
+
+            console.log(result);
+            console.log('hello');
+        }
+
+        // Gọi async function 
+        asyncFunc();
+
+    </script>
+</body>
+
+</html>
