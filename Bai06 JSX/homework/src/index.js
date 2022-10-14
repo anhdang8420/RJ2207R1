@@ -6,9 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import UserAgent from './components/UserAgent';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import StudentsList  from './components/StudentsList';
+import ProfileCard from './components/ProfileCard';
 
 const container = document.getElementById('root');
 const root= ReactDOM.createRoot(container);
-root.render(<StudentsList/>);
+root.render(<ProfileCard />);
 
 reportWebVitals();
