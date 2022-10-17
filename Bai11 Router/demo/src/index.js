@@ -9,7 +9,7 @@ import Route3 from './components/Router 3/Router3';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Route3/>
+    <Index/>
 );
 
 
