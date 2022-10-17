@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/router'
-
+import Link from 'next/link';
 function Table() {
     const students = [
         {
@@ -45,7 +45,9 @@ function Table() {
                             <td>{student.id}</td>
                             <td>{student.name}</td>
                             <td>
-                                <button className="btn btn-primary mx-2">Show</button>
+                                <Link href={`/member/${index}`}>
+                                    <button className="btn btn-primary mx-2">Show</button>
+                                </Link>
                             </td>
                         </tr>
                     ))}
