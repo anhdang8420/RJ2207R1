@@ -104,7 +104,7 @@ export const Post = () => {
                 <table className="table table-hover table-striped">
                     <thead>
                         <tr className="text-center">
-                            <th>STT</th>
+                            <th>Mã sách</th>
                             <th>Tên sách</th>
                             <th>Tác giả</th>
                             <th>Ảnh</th>

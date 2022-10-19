@@ -29,7 +29,7 @@ export default function CarGarage() {
                     ))
                 }
             </select>
-            <p>You selected a {selectedCar.color} - {selectedCar.car}</p>
+            <p>You selected a  {selectedCar.car} - {selectedCar.color}</p>
         </div>
     )
 }
