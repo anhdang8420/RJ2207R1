@@ -46,6 +46,9 @@ export default function CategoryEdit() {
                         <label for="name">Thể loại</label>
                         <input placeholder="Enter the name of category" name="name" type="text" value={category.name || ''} onChange={handleChange}></input>
                         <br /><br />
+                        <label for="description">Mô tả</label>
+                        <input placeholder="Enter the name of category" name="description" type="text" value={category.description || ''} onChange={handleChange}></input>
+                        <br /><br />
                         <button type="submit">Lưu</button>
                     </form>
                 </div>

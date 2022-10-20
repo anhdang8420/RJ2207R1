@@ -39,6 +39,7 @@ export default function CategoriesIndex() {
                             <tr className="text-center">
                                 <th>Mã thể loại</th>
                                 <th>Thể loại</th>
+                                <th>Mô tả</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -48,6 +49,7 @@ export default function CategoriesIndex() {
                                     <tr key={index}>
                                         <td>{category.id}</td>
                                         <td>{category.name}</td>
+                                        <td>{category.description}</td>
                                         
                                         <td>
                                             <Link href={{

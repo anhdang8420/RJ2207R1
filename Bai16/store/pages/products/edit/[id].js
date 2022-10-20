@@ -20,7 +20,7 @@ export default function ProductEdit() {
     }, []);
 
     //used to update product's information
-    useEffect(() => { 
+    useEffect(() => {
         //cứ khi nào id thay đổi thì gọi hàm này, nếu create thì ko cần phải phần code lấy trước id này
         axios.get('http://localhost:3001/products/' + id)
             .then(res => {
@@ -35,31 +35,52 @@ export default function ProductEdit() {
         setProduct({ ...product, [e.target.name]: e.target.value });
     }
 
-    const [selectedCategory, setCategory] = useState({ category: categories[0]});
+    const [selectedCategory, setCategory] = useState({ category: categories[0] });
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put('http://localhost:3001/products/' + id, product)
+        axios.put('http://localhost:3001/products/' + id, { ...product, cate_id: parseInt(product.cate_id) })
             .then(response => {
                 router.push('/products');
             })
             .catch(err => { console.log(err); });
     }
+
     return (
         <div>
             <Layout>
                 <div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} onChange={handleChange}>
                         <label for="title">Tên sách</label>
-                        <input name="title" type="text" value={product.title || ''} onChange={handleChange}></input>
+                        <input name="title" type="text" value={product.title || ''}></input>
                         <br /><br />
-                        <label for="categories">Thể loại</label>
-                        <select name="categories" onChange={handleChange}>
+                        Thể loại:
+                        <select name="cate_id" onChange={handleChange}>
                             {
-                                categories.map((category, index) => (
-                                    <option value={category.name} key={index}>{category.name}</option>
-                                ))
+                                categories.map((category, index) => {
+                                    if (index === 0) {
+                                        return (<option value={category.id} selected key={index}>{category.name}</option>)
+                                    }
+
+                                    else
+                                        return (<option value={category.id} key={index}>{category.name}</option>)
+                                }
+                                )
                             }
                         </select>
+                        <br /><br />
+                        <label for="image">Ảnh</label>
+                        <input name="image" type="text" value={product.image || ''}></input>
+                        <br /><br />
+                        <label for="author">Tác giả</label>
+                        <input name="author" type="text" value={product.author || ''}></input>
+                        <br /><br />
+                        <label for="quantity">Số lượng</label>
+                        <input name="quantity" type="number" value={product.quantity || ''}></input>
+                        <br /><br />
+                        <label for="price">Giá</label>
+                        <input name="price" type="number" value={product.price || ''}></input>
+
                         <br /><br />
                         <button type="submit">Lưu</button>
                     </form>

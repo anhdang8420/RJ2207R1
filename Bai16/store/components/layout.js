@@ -20,7 +20,7 @@ export default function Layout({ children }) {
 
             <div className="wrapper pt-3">
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-lg-3 col-sm-6">
                         <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
                             <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                                 <span className="fs-4">Chức năng</span>
@@ -111,7 +111,7 @@ export default function Layout({ children }) {
                     </div>
                 </section>
 
-                <div className="text-center p-4" style={{ "background-color": "rgba(0, 0, 0, 0.05)" }}>
+                <div className="text-center p-4" style={{ "backgroundColor": "rgba(0, 0, 0, 0.05)" }}>
                     © 2021 Copyright:
                     <a className="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
                 </div>

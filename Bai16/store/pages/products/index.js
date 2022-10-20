@@ -29,15 +29,6 @@ export default function ProductsIndex() {
             });
     }, []);
 
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:3001/products')
-    //         .then(res => {
-    //             setProducts(res.data);
-    //         })
-    //         .catch(err => { console.log(err); });
-    // }, []);
-
     const deleteProduct = (index) => {
         let answer = window.confirm("Bạn có chắc muốn xoá?");
         if (answer == true) {

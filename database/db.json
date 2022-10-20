@@ -40,31 +40,61 @@
       "user_id": 1
     }
   ],
+  "account": [
+    {
+      "username": "admin",
+      "password": "123456"
+    }
+  ],
   "categories": [
     {
       "id": 1,
-      "name": "Văn học"
+      "name": "Văn học",
+      "description": "Văn học hiện đại"
     },
     {
       "id": 2,
-      "name": "Sách tham khảo"
+      "name": "Sách tham khảo",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "name": "Sách giáo khoa",
+      "description": ""
+    },
+    {
+      "name": "Thơ",
+      "id": 4,
+      "description": "Các tập thơ"
+    },
+    {
+      "name": "Sách bài tập",
+      "description": "SBT lớp 1-12",
+      "id": 5
     }
   ],
   "products": [
     {
+      "product": {
+        "id": 1,
+        "title": "Những ngôi sao xa xôi",
+        "image": "",
+        "author": "Nam Cao",
+        "quantity": 10,
+        "price": 30000,
+        "cate_id": 2
+      },
+      "cate_id": 3,
       "id": 1,
-      "title": "Lão hạc",
-      "image": "",
-      "author": "Nam Cao",
-      "quantity": 10,
-      "price": 50000,
-      "cate_id": 1,
-      "name": "Những ngôi sao xa xôi",
-      "categories": "Sách tham khảo"
+      "title": "SGK Toán",
+      "quantity": 6,
+      "price": 10000,
+      "author": "NXB VN",
+      "image": ""
     },
     {
       "id": 2,
-      "title": "Bồi dưỡng văn học",
+      "title": "Lão hạc",
       "image": "",
       "author": "Nam Cao",
       "quantity": 10,
@@ -73,16 +103,36 @@
     },
     {
       "id": 3,
-      "title": "Lão hạc",
+      "title": "Truyện kiều",
       "image": "",
-      "author": "Nam Cao",
-      "quantity": 10,
-      "price": 50000,
-      "cate_id": 1
+      "author": "Nguyễn Du",
+      "quantity": "1",
+      "price": 22000,
+      "cate_id": 4
+    },
+    {
+      "cate_id": 1,
+      "title": "Sách tham khảo A",
+      "author": "Ngô Tất Tố",
+      "quantity": "10",
+      "price": "1",
+      "id": 4
+    },
+    {
+      "title": "A",
+      "cate_id": 5,
+      "author": "NXB VN",
+      "quantity": "10",
+      "price": "30000",
+      "id": 5
+    },
+    {
+      "title": "A",
+      "cate_id": 3,
+      "author": "NXB VN",
+      "quantity": "4",
+      "price": "4",
+      "id": 6
     }
-  ],
-  "comments": [],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
