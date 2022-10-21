@@ -4,14 +4,26 @@ import { ErrorMessage, Field, Form, Formik, setNestedObjectValues, useFormikCont
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+import axios from "axios";
+import Router from "next/router";
 
 export default function LoginIndex() {
+    const [form, setForm] = useState({ email: '', password: '' });
+
+
     const loginSchema = Yup.object().shape({
         email: Yup.string().email().required(),
         password: Yup.string().min(6).max(10).required(),
     });
-    const [form, setForm] = useState({ email: '', password: '' });
+
+    const [accounts, setAccounts] = useState([]);
+    useEffect(() => {
+        axios.get("http://localhost:3001/accounts")
+            .then(res => {
+                setAccounts(res.data);
+            })
+            .catch(err => { console.log(err); });
+    }, []);
 
     const handleChange = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value });
@@ -34,6 +46,7 @@ export default function LoginIndex() {
                                 alert("Please enter a valid account");
                             }
                         }}
+
                     >
                         <Form>
                             <div className="form-outline mb-2">
@@ -41,7 +54,7 @@ export default function LoginIndex() {
                                 <ErrorMessage component="div" className="text-danger" name="email" />
                             </div>
                             <div className="form-outline mb-2">
-                                <Field className="form-control" name="password" type="password" placeholder="Enter your password" value={form.password || ""} onChange={handleChange} />
+                                <Field className="form-control" name="password" type="text" placeholder="Enter your password" value={form.password || ""} onChange={handleChange} />
                                 <ErrorMessage component="div" className="text-danger" name="password" />
                             </div>
                             <div className="form-check d-flex justify-content-start mb-3">
@@ -49,11 +62,10 @@ export default function LoginIndex() {
                                 <label className="form-check-label" for="form1Example3"> Remember password </label>
                             </div>
                             <div class="d-grid gap-1">
-                                <Link href={{ pathname: 'products/' }}>
-                                    <button type="submit" className="btn btn-primary mb-3 me-2">Login</button>
-                                </Link>
+
+                                <button type="submit" className="btn btn-primary mb-3 me-2">Login</button>
                             </div>
-                            <hr/>
+                            <hr />
                             <div class="d-grid gap-2">
                                 <button class="btn btn-danger mb-2 me-2" type="button"><i class="fab fa-google me-2"></i>Sign in with google</button>
                                 <button class="btn btn-primary me-2 " type="button"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
@@ -63,7 +75,7 @@ export default function LoginIndex() {
                 </div>
 
 
-            </Login>
-        </div>
+            </Login >
+        </div >
     )
 }

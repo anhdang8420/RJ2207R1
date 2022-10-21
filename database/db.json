@@ -40,9 +40,9 @@
       "user_id": 1
     }
   ],
-  "account": [
+  "accounts": [
     {
-      "username": "admin",
+      "email": "admin@gmail.com",
       "password": "123456"
     }
   ],
@@ -84,11 +84,11 @@
         "price": 30000,
         "cate_id": 2
       },
-      "cate_id": 3,
+      "cate_id": 1,
       "id": 1,
       "title": "SGK Toán",
-      "quantity": 6,
-      "price": 10000,
+      "quantity": 10,
+      "price": 20000,
       "author": "NXB VN",
       "image": ""
     },
@@ -99,40 +99,42 @@
       "author": "Nam Cao",
       "quantity": 10,
       "price": 50000,
-      "cate_id": 2
+      "cate_id": 4
     },
     {
       "id": 3,
       "title": "Truyện kiều",
       "image": "",
       "author": "Nguyễn Du",
-      "quantity": "1",
+      "quantity": 10,
       "price": 22000,
-      "cate_id": 4
+      "cate_id": 1
     },
     {
-      "cate_id": 1,
-      "title": "Sách tham khảo A",
-      "author": "Ngô Tất Tố",
-      "quantity": "10",
-      "price": "1",
-      "id": 4
-    },
-    {
-      "title": "A",
-      "cate_id": 5,
-      "author": "NXB VN",
-      "quantity": "10",
-      "price": "30000",
-      "id": 5
-    },
-    {
-      "title": "A",
+      "title": "Am nhac",
       "cate_id": 3,
+      "author": "NXB GD",
+      "quantity": 4,
+      "price": 70000,
+      "id": 8
+    },
+    {
+      "title": "D",
+      "cate_id": 3,
+      "image": "",
       "author": "NXB VN",
-      "quantity": "4",
-      "price": "4",
-      "id": 6
+      "quantity": 10,
+      "price": 4343,
+      "id": 9
+    },
+    {
+      "title": 0,
+      "cate_id": 4,
+      "image": "",
+      "author": "Xuân Quỳnh",
+      "quantity": 7,
+      "price": 50000,
+      "id": 10
     }
   ]
 }

@@ -32,7 +32,12 @@ export default function ProductEdit() {
     // console.log(query.id);
 
     const handleChange = (e) => {
-        setProduct({ ...product, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        if (isNaN(value)) {
+            setProduct({ ...product, [name]: value });
+        }
+        else
+            setProduct({ ...product, [name]: +value });
     }
 
     const [selectedCategory, setCategory] = useState({ category: categories[0] });
@@ -56,16 +61,12 @@ export default function ProductEdit() {
                         <br /><br />
                         Thể loại:
                         <select name="cate_id" onChange={handleChange}>
+                            <option>Thể loại</option>
                             {
-                                categories.map((category, index) => {
-                                    if (index === 0) {
-                                        return (<option value={category.id} selected key={index}>{category.name}</option>)
-                                    }
+                                categories.map((category, index) => (
+                                    <option value={category.id} key={index}>{category.name}</option>
+                                ))
 
-                                    else
-                                        return (<option value={category.id} key={index}>{category.name}</option>)
-                                }
-                                )
                             }
                         </select>
                         <br /><br />
@@ -76,10 +77,10 @@ export default function ProductEdit() {
                         <input name="author" type="text" value={product.author || ''}></input>
                         <br /><br />
                         <label for="quantity">Số lượng</label>
-                        <input name="quantity" type="number" value={product.quantity || ''}></input>
+                        <input name="quantity" type="text" value={product.quantity || ''}></input>
                         <br /><br />
                         <label for="price">Giá</label>
-                        <input name="price" type="number" value={product.price || ''}></input>
+                        <input name="price" type="text" value={product.price || ''}></input>
 
                         <br /><br />
                         <button type="submit">Lưu</button>
@@ -87,6 +88,7 @@ export default function ProductEdit() {
                 </div>
             </Layout>
         </div>
+
 
     )
 }

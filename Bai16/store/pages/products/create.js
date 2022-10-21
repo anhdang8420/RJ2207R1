@@ -5,8 +5,6 @@ import Layout from "../../components/layout";
 
 export default function ProductCreate() {
     const router = useRouter();
-    const query = router.query;
-    const id = query.id;
     const [product, setProduct] = useState({})
     const [categories, setCategories] = useState([]);
 
@@ -20,15 +18,19 @@ export default function ProductCreate() {
     }, []);
 
     const handleChange = (e) => {
-        setProduct({ ...product, [e.target.name]: e.target.value});
-        
+        const { name, value } = e.target;
+        if (isNaN(value)) {
+            setProduct({ ...product, [name]: value });
+        }
+        else
+            setProduct({ ...product, [name]: +value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({...product, cate_id: parseInt(product.cate_id)});
+        console.log({ ...product, cate_id: parseInt(product.cate_id) });
 
-        axios.post('http://localhost:3001/products', {...product, cate_id: parseInt(product.cate_id)})
+        axios.post('http://localhost:3001/products', { ...product, cate_id: parseInt(product.cate_id) })
             .then(response => {
                 router.push('/products');
 
@@ -36,7 +38,7 @@ export default function ProductCreate() {
             .catch(err => { console.log(err); });
     }
 
-    
+
     return (
         <div>
             <Layout>
@@ -46,18 +48,13 @@ export default function ProductCreate() {
                         <input name="title" type="text" value={product.title || ''}></input>
                         <br /><br />
                         Thể loại:
-                        <select name="cate_id" onChange={handleChange} value='1'>
+                        <select name="cate_id" onChange={handleChange}>
+                            <option>Thể loại</option>
                             {
-                                categories.map((category, index) => {
-                                    console.log(category);
-                                    if(index === 0){
+                                categories.map((category, index) => (
+                                    <option value={category.id} key={index}>{category.name}</option>
+                                ))
 
-                                        return (<option value={category.id} selected key={index}>{category.name}</option>)
-                                    }
-                                
-                                else
-                                return (<option value={category.id} key={index}>{category.name}</option>)  
-                                })
                             }
                         </select>
                         <br /><br />

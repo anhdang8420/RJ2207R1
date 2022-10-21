@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Layout from "../../components/layout";
 import axios from 'axios';
 import Link from "next/link";
-import { useNavigate } from "react-router-dom";
 
 export default function ProductsIndex() {
     const [products, setProducts] = useState([]);
