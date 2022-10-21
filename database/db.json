@@ -50,7 +50,7 @@
     {
       "id": 1,
       "name": "Văn học",
-      "description": "Văn học hiện đại"
+      "description": "Văn học VN và nước ngoài"
     },
     {
       "id": 2,
@@ -99,7 +99,7 @@
       "author": "Nam Cao",
       "quantity": 10,
       "price": 50000,
-      "cate_id": 4
+      "cate_id": 1
     },
     {
       "id": 3,
@@ -111,22 +111,13 @@
       "cate_id": 1
     },
     {
-      "title": "Am nhac",
+      "title": "Ngữ Văn 7",
       "cate_id": 3,
+      "image": 0,
       "author": "NXB GD",
-      "quantity": 4,
-      "price": 70000,
-      "id": 8
-    },
-    {
-      "title": "D",
-      "cate_id": 3,
-      "image": "",
-      "author": "NXB VN",
       "quantity": 10,
-      "price": 4343,
-      "id": 9
+      "price": 2000,
+      "id": 4
     }
-    
   ]
 }

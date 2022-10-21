@@ -83,7 +83,7 @@ export default function ProductCreate() {
                                                             (<option value={category.id} key={index}>{category.name}</option>)
                                                         )
                                                     }
-                                                    <ErrorMessage component="div" className="text-danger" name="image" />
+                                                    <ErrorMessage component="div" className="text-danger" name="cate_id" />
                                                 </Field>
                                             </div>
                                             <div className="form-outline mb-2">

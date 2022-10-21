@@ -58,54 +58,60 @@ export default function ProductEdit() {
             <Layout>
                 <div className="container pt-3">
                     <Formik
-                        initialValues={{ product}}
+                        initialValues={product}
                         enableReinitialize={true}
                         validationSchema={productEditSchema}
-                        onSubmit={(values) => { 
+                        onSubmit={(values) => {
                             console.log(values);
-
-                            // axios.put('http://localhost:3001/products/' + id, { ...values, cate_id: parseInt(values.cate_id) })
-                            //     .then(response => {
-                            //         if (isNaN(values)) {
-                            //             values: values;
-                            //         }
-                            //         else {
-                            //             values: +values;
-                            //         }
-                            //         router.push('/products');
-                            //     })
-                            //     .catch(err => { console.log(err); });
+                            if (isNaN(values)) {
+                                values: values;
+                            }
+                            else {
+                                values: +values;
+                            }
+                            axios.put('http://localhost:3001/products/'+id, Object.fromEntries(
+                                Object.keys(values).map(key => {
+                                  if (isNaN(values[key])) return [key, values[key]];
+                                  else return [key, +values[key]];
+                                })
+                              ),{cate_id: parseInt(values.cate_id)} )
+                            .then(response => {
+                                    router.push('/products');
+                                })
+                                .catch(err => { console.log(err); });
                         }}
+
+                        
 
                     >
                         {({ errors, touched }) => (
                             <Form >
                                 <div className="form-outline mb-2">
-                                    <Field className="form-control" name="title" type="text"  placeholder="Nhập tên sách" />
+                                    <Field className="form-control" name="title" type="text" placeholder="Nhập tên sách" />
                                     <ErrorMessage component="div" className="text-danger" name="title" />
                                 </div>
                                 <div className="form-outline mb-2">
-                                    <Field className="form-control" as="select" name="cate_id" >
+                                    <Field className="form-control" as="select" name="cate_id" value={product.cate_id || ''}>
                                         <option className="disabled selected" >Thể loại</option>
                                         {
                                             categories.map((category, index) =>
-                                                (<option key={index}>{category.name}</option>)
+                                                (<option value={category.id} key={index}>{category.name}</option>)
                                             )
                                         }
-                                        <ErrorMessage component="div" className="text-danger" name="image" />
+                                        <ErrorMessage component="div" className="text-danger" name="cate_id" />
                                     </Field>
                                 </div>
-                               
+
                                 <div className="form-outline mb-2">
-                                    <Field className="form-control" name="image" placeholder="Enter a link of image"  />
+                                    <Field className="form-control" name="image" placeholder="Enter a link of image" />
                                     <ErrorMessage component="div" className="text-danger" name="image" />
                                 </div>
                                 <div className="form-outline mb-2">
-                                    <Field className="form-control" name="author" placeholder="Enter an author"  />
+                                    <Field className="form-control" name="author" placeholder="Enter an author" />
                                     <ErrorMessage component="div" className="text-danger" name="author" />
                                 </div>
                                 <div className="form-outline mb-2">
-                                    <Field className="form-control" name="quantity" placeholder="Enter a quantity"  />
+                                    <Field className="form-control" name="quantity" placeholder="Enter a quantity" />
                                     <ErrorMessage component="div" className="text-danger" name="quantity" />
                                 </div>
                                 <div className="form-outline mb-2">

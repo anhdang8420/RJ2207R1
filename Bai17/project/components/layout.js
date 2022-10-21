@@ -38,7 +38,7 @@ export default function Layout({ children }) {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link href="">
+                                    <Link href="/report">
                                         <a className="nav-link">Báo cáo</a>
                                     </Link>
                                 </li>
