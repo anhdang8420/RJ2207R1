@@ -62,8 +62,8 @@ export default function ProductEdit() {
                         initialValues={{ title: '', cate_id: '', image: '', author: '', quantity: '', price: '', }}
                         enableReinitialize={true}
                         validationSchema={productEditSchema}
-                        onSubmit= {(e) => {
-                            axios.put('http://localhost:3001/products/' + id, { ...product, cate_id: parseInt(product.cate_id) })
+                        onSubmit= {(value) => {
+                            axios.put('http://localhost:3001/products/' + id, { ...value, cate_id: parseInt(value.cate_id) })
                                 .then(response => {
                                     router.push('/products');
                                 })
