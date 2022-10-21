@@ -12,12 +12,12 @@ export default function Report() {
             })
             .catch(err => { console.log(err); });
     }, []);
-    
-    let total = products.reduce((total, product) => total += product.quantity,0)
 
-return (
-    <di>
-        <p>Tổng số lượng sản phẩm: {total}</p>
-    </di>
-)
+    let total = products.reduce((total, product) =>total += product.quantity, 0)
+
+    return (
+        <di>
+            <p>Tổng số lượng sản phẩm: {total}</p>
+        </di>
+    )
 }

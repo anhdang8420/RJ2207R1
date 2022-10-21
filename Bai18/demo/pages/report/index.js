@@ -31,6 +31,7 @@ export default function Report() {
                             product: res2.data.filter(item => {
                                 console.log(item)
                                 return item.cate_id === category.id;
+                                
                             }),
                         };
                     });
@@ -41,11 +42,10 @@ export default function Report() {
                 throw err;
             });
     }, []);
-
     return (
         <di>
 
-            <p>Tổng số lượng sản phẩm: </p>
+            <p>Tổng số lượng sản phẩm:</p>
             <table>
 
                 <thead>
