@@ -20,7 +20,7 @@ export default function ProductEdit() {
     const id = query.id;
     const [product, setProduct] = useState({})
     const [categories, setCategories] = useState([]);
-    
+
 
     //get Categories' information
     useEffect(() => {
@@ -40,20 +40,19 @@ export default function ProductEdit() {
             })
             .catch(err => { console.log(err); });
     }, [id])
-    // console.log(query.id);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        if (isNaN(value)) {
-            setProduct({ ...product, [name]: value });
-            
-        }
-        else
-            setProduct({ ...product, [name]: +value });
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     if (isNaN(value)) {
+    //         setProduct({ ...product, [name]: value });
 
-    }
+    //     }
+    //     else
+    //         setProduct({ ...product, [name]: +value });
 
-   
+    // }
+
+
     return (
         <div>
             <Layout>
@@ -62,23 +61,28 @@ export default function ProductEdit() {
                         initialValues={{ title: '', cate_id: '', image: '', author: '', quantity: '', price: '', }}
                         enableReinitialize={true}
                         validationSchema={productEditSchema}
-                        onSubmit= {(value) => {
-                            e.preventDefault();
-                            axios.put('http://localhost:3001/products/' + id, { ...value, cate_id: parseInt(value.cate_id) })
+                        onSubmit={(values) => {
+                            axios.put('http://localhost:3001/products/' + id, { ...values, cate_id: parseInt(values.cate_id) })
                                 .then(response => {
+                                    if (isNaN(values)) {
+                                        values: values ;
+                                    }
+                                    else{
+                                        values: +values ;
+                                    }
                                     router.push('/products');
                                 })
                                 .catch(err => { console.log(err); });
                         }}
-                    
+
                     >
                         <Form >
                             <div className="form-outline mb-2">
-                                <Field className="form-control" name="title" type="text" value={product.title || ''} placeholder="Nhập tên sách" value={product.title || ""} onChange={handleChange} />
+                                <Field className="form-control" name="title" type="text" value={product.title || ''} placeholder="Nhập tên sách"  />
                                 <ErrorMessage component="div" className="text-danger" name="title" />
                             </div>
                             <div className="form-outline mb-2">
-                                <Field className="form-control" as="select" name="cate_id" onChange={handleChange} value={product.cate_id || ''}>
+                                <Field className="form-control" as="select" name="cate_id" value={product.cate_id || ''}>
                                     <option className="disabled selected" >Thể loại</option>
                                     {
                                         categories.map((category, index) =>
@@ -89,23 +93,23 @@ export default function ProductEdit() {
                                 </Field>
                             </div>
                             <div className="form-outline mb-2">
-                                <Field className="form-control" name="image" placeholder="Enter a link of image" value={product.image || ""} onChange={handleChange} />
+                                <Field className="form-control" name="image" placeholder="Enter a link of image" value={product.image || ""} />
                                 <ErrorMessage component="div" className="text-danger" name="image" />
                             </div>
                             <div className="form-outline mb-2">
-                                <Field className="form-control" name="image" placeholder="Enter a link of image" value={product.image || ""} onChange={handleChange} />
+                                <Field className="form-control" name="image" placeholder="Enter a link of image" value={product.image || ""}  />
                                 <ErrorMessage component="div" className="text-danger" name="image" />
                             </div>
                             <div className="form-outline mb-2">
-                                <Field className="form-control" name="author" placeholder="Enter an author" value={product.author || ""} onChange={handleChange} />
+                                <Field className="form-control" name="author" placeholder="Enter an author" value={product.author || ""} />
                                 <ErrorMessage component="div" className="text-danger" name="author" />
                             </div>
                             <div className="form-outline mb-2">
-                                <Field className="form-control" name="quantity" placeholder="Enter a quantity" value={product.quantity || ""} onChange={handleChange} />
+                                <Field className="form-control" name="quantity" placeholder="Enter a quantity" value={product.quantity || ""} />
                                 <ErrorMessage component="div" className="text-danger" name="quantity" />
                             </div>
                             <div className="form-outline mb-2">
-                                <Field className="form-control" name="price" placeholder="Enter price" value={product.price || ""} onChange={handleChange} />
+                                <Field className="form-control" name="price" placeholder="Enter price" value={product.price || ""}  />
                                 <ErrorMessage component="div" className="text-danger" name="price" />
                             </div>
                             <button type="submit" className="btn btn-primary mb-4 mx-2">Lưu</button>
@@ -114,7 +118,7 @@ export default function ProductEdit() {
                 </div>
             </Layout >
 
-        </div>
+        </div >
 
 
     )
