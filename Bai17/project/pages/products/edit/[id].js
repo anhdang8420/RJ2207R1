@@ -14,7 +14,6 @@ export default function ProductEdit() {
         quantity: Yup.number().min(1).max(100).required(),
         price: Yup.number().min(1).required()
     });
-    const [form, setForm] = useState({ title: '', cate_id: '', image: '', author: '', quantity: '', price: '', });
 
     const router = useRouter();
     const query = router.query;
@@ -47,28 +46,30 @@ export default function ProductEdit() {
         const { name, value } = e.target;
         if (isNaN(value)) {
             setProduct({ ...product, [name]: value });
+            
         }
         else
             setProduct({ ...product, [name]: +value });
+
     }
 
-    const handleSubmit = (e) => {
-        axios.put('http://localhost:3001/products/' + id, { ...product, cate_id: parseInt(product.cate_id) })
-            .then(response => {
-                router.push('/products');
-            })
-            .catch(err => { console.log(err); });
-    }
-
+   
     return (
         <div>
             <Layout>
                 <div className="container pt-3">
                     <Formik
-                        initialValues={product}
+                        initialValues={{ title: '', cate_id: '', image: '', author: '', quantity: '', price: '', }}
                         enableReinitialize={true}
                         validationSchema={productEditSchema}
-                        onSubmit={handleSubmit}
+                        onSubmit= {(e) => {
+                            axios.put('http://localhost:3001/products/' + id, { ...product, cate_id: parseInt(product.cate_id) })
+                                .then(response => {
+                                    router.push('/products');
+                                })
+                                .catch(err => { console.log(err); });
+                        }}
+                    
                     >
                         <Form >
                             <div className="form-outline mb-2">
