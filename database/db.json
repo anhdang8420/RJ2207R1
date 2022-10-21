@@ -126,15 +126,7 @@
       "quantity": 10,
       "price": 4343,
       "id": 9
-    },
-    {
-      "title": 0,
-      "cate_id": 4,
-      "image": "",
-      "author": "Xuân Quỳnh",
-      "quantity": 7,
-      "price": 50000,
-      "id": 10
     }
+    
   ]
 }

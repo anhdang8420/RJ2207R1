@@ -61,18 +61,20 @@ export default function ProductEdit() {
                         initialValues={{ product}}
                         enableReinitialize={true}
                         validationSchema={productEditSchema}
-                        onSubmit={(values) => {
-                            axios.put('http://localhost:3001/products/' + id, { ...values, cate_id: parseInt(values.cate_id) })
-                                .then(response => {
-                                    if (isNaN(values)) {
-                                        values: values;
-                                    }
-                                    else {
-                                        values: +values;
-                                    }
-                                    router.push('/products');
-                                })
-                                .catch(err => { console.log(err); });
+                        onSubmit={(values) => { 
+                            console.log(values);
+
+                            // axios.put('http://localhost:3001/products/' + id, { ...values, cate_id: parseInt(values.cate_id) })
+                            //     .then(response => {
+                            //         if (isNaN(values)) {
+                            //             values: values;
+                            //         }
+                            //         else {
+                            //             values: +values;
+                            //         }
+                            //         router.push('/products');
+                            //     })
+                            //     .catch(err => { console.log(err); });
                         }}
 
                     >
@@ -93,10 +95,7 @@ export default function ProductEdit() {
                                         <ErrorMessage component="div" className="text-danger" name="image" />
                                     </Field>
                                 </div>
-                                <div className="form-outline mb-2">
-                                    <Field className="form-control" name="image" placeholder="Enter a link of image"  />
-                                    <ErrorMessage component="div" className="text-danger" name="image" />
-                                </div>
+                               
                                 <div className="form-outline mb-2">
                                     <Field className="form-control" name="image" placeholder="Enter a link of image"  />
                                     <ErrorMessage component="div" className="text-danger" name="image" />
