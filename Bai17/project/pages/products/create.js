@@ -59,6 +59,7 @@ export default function ProductCreate() {
     return (
         <div>
             <Layout>
+                <h2>Thêm sản phẩm</h2>
                 <div className="container pt-3">
                     <Formik
                         initialValues={product}

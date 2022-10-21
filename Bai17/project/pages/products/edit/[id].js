@@ -56,6 +56,7 @@ export default function ProductEdit() {
     return (
         <div>
             <Layout>
+                <h3>Sửa sản phẩm</h3>
                 <div className="container pt-3">
                     <Formik
                         initialValues={product}
@@ -69,56 +70,61 @@ export default function ProductEdit() {
                             else {
                                 values: +values;
                             }
-                            axios.put('http://localhost:3001/products/'+id, Object.fromEntries(
+                            axios.put('http://localhost:3001/products/' + id, Object.fromEntries(
                                 Object.keys(values).map(key => {
-                                  if (isNaN(values[key])) return [key, values[key]];
-                                  else return [key, +values[key]];
+                                    if (isNaN(values[key])) return [key, values[key]];
+                                    else return [key, +values[key]];
                                 })
-                              ),{cate_id: parseInt(values.cate_id)} )
-                            .then(response => {
+                            ), { cate_id: parseInt(values.cate_id) })
+                                .then(response => {
                                     router.push('/products');
                                 })
                                 .catch(err => { console.log(err); });
                         }}
-
-                        
-
                     >
                         {({ errors, touched }) => (
                             <Form >
-                                <div className="form-outline mb-2">
-                                    <Field className="form-control" name="title" type="text" placeholder="Nhập tên sách" />
-                                    <ErrorMessage component="div" className="text-danger" name="title" />
-                                </div>
-                                <div className="form-outline mb-2">
-                                    <Field className="form-control" as="select" name="cate_id" value={product.cate_id || ''}>
-                                        <option className="disabled selected" >Thể loại</option>
-                                        {
-                                            categories.map((category, index) =>
-                                                (<option value={category.id} key={index}>{category.name}</option>)
-                                            )
-                                        }
-                                        <ErrorMessage component="div" className="text-danger" name="cate_id" />
-                                    </Field>
-                                </div>
+                                <div className="row d-flex justify-content-center align-items-center h-100">
+                                    <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                                        <div className="card shadow-2-strong" style={{ borderRadius: "1rem" }}>
+                                            <div className="card-body p-4 text-center">
+                                                <div className="form-outline mb-2">
+                                                    <Field className="form-control" name="title" type="text" placeholder="Nhập tên sách" />
+                                                    <ErrorMessage component="div" className="text-danger" name="title" />
+                                                </div>
+                                                <div className="form-outline mb-2">
+                                                    <Field className="form-control" as="select" name="cate_id" value={product.cate_id || ''}>
+                                                        <option className="disabled selected" >Thể loại</option>
+                                                        {
+                                                            categories.map((category, index) =>
+                                                                (<option value={category.id} key={index}>{category.name}</option>)
+                                                            )
+                                                        }
+                                                        <ErrorMessage component="div" className="text-danger" name="cate_id" />
+                                                    </Field>
+                                                </div>
 
-                                <div className="form-outline mb-2">
-                                    <Field className="form-control" name="image" placeholder="Enter a link of image" />
-                                    <ErrorMessage component="div" className="text-danger" name="image" />
+                                                <div className="form-outline mb-2">
+                                                    <Field className="form-control" name="image" placeholder="Enter a link of image" />
+                                                    <ErrorMessage component="div" className="text-danger" name="image" />
+                                                </div>
+                                                <div className="form-outline mb-2">
+                                                    <Field className="form-control" name="author" placeholder="Enter an author" />
+                                                    <ErrorMessage component="div" className="text-danger" name="author" />
+                                                </div>
+                                                <div className="form-outline mb-2">
+                                                    <Field className="form-control" name="quantity" placeholder="Enter a quantity" />
+                                                    <ErrorMessage component="div" className="text-danger" name="quantity" />
+                                                </div>
+                                                <div className="form-outline mb-2">
+                                                    <Field className="form-control" name="price" placeholder="Enter price" />
+                                                    <ErrorMessage component="div" className="text-danger" name="price" />
+                                                </div>
+                                                <button type="submit" className="btn btn-primary mb-4 mx-2">Lưu</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="form-outline mb-2">
-                                    <Field className="form-control" name="author" placeholder="Enter an author" />
-                                    <ErrorMessage component="div" className="text-danger" name="author" />
-                                </div>
-                                <div className="form-outline mb-2">
-                                    <Field className="form-control" name="quantity" placeholder="Enter a quantity" />
-                                    <ErrorMessage component="div" className="text-danger" name="quantity" />
-                                </div>
-                                <div className="form-outline mb-2">
-                                    <Field className="form-control" name="price" placeholder="Enter price" />
-                                    <ErrorMessage component="div" className="text-danger" name="price" />
-                                </div>
-                                <button type="submit" className="btn btn-primary mb-4 mx-2">Lưu</button>
                             </Form>
                         )}
                     </Formik>
